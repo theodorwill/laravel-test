@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\SkuData;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,8 @@ class SkuDataSeeder extends Seeder
      */
     public function run()
     {
-        //
+        SkuData::factory()
+        ->count(20)
+        ->Create();
     }
 }

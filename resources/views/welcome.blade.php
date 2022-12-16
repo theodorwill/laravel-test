@@ -403,11 +403,11 @@
 
             @foreach ($allSkuData as $skuData)
             <div class="flex" style="align-items: center;">
-            <p>Data: {{ $skuData->name }}</p>
+            <p>Data: {{ $skuData->sku }}</p>
 
             
             
-            <button >Delete</button>
+            <!-- <button >Delete</button> -->
             
 
             </div>
@@ -416,7 +416,7 @@
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
             <label for="skuData">SKU-Data</label></br>
-            <input type="text" name="skuData"></br>
+            <input type="number" name="skuData" placeholder="6 number id"></br>
             <button type="submit">GIMME DATA!</button>
             </form>
 

@@ -17,7 +17,7 @@ class SkuDataFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'sku' => $this->faker->numberBetween(100000, 999999)
         ];
     }
 }
