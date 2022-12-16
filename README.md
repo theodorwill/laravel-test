@@ -1,3 +1,19 @@
+# Setup
+
+## Install
+```
+npm install
+```
+
+```
+php artisan serve
+```
+
+## seed
+```
+php artisan migrate:fresh --seed
+```
+
 # Endpoints
 
 ## POST 
