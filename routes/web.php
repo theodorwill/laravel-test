@@ -14,15 +14,6 @@ use App\Http\Controllers\SkuDataController;
 |
 */
 
-//API-routes
-Route::get('/items', [SkuDataController::class, 'showAll']);
-
-Route::get('/item/{id}', [SkuDataController::class, 'show']);
-
-route::post('/sku', [SkuDataController::class, 'store']);
-
-Route::delete('/deleteItem/{id}', [SkuDataController::class, 'destroy']);
-
 //Front-end-routes
 Route::get('/', [SkuDataController::class, 'index']);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SkuData;
 use App\Http\Requests\StoreSkuDataRequest;
 use App\Http\Requests\UpdateSkuDataRequest;
+use App\Http\Resources\V1\SkuDataResource;
 use Illuminate\Validation\Rule;
 
 class SkuDataController extends Controller

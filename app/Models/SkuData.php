@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class SkuData extends Model
 {
+    protected $fillable = ['sku'];
     use HasFactory;
 }
