@@ -33,6 +33,20 @@ class SkuDataController extends Controller
         return view('welcome', ['allSkuData' => SkuData::all()]);
     }
 
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\SkuData  $skuData
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function deleteItem($id){
+        $skuData = SkuData::find($id);
+        $skuData->delete();
+
+        return redirect('/');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,9 +74,24 @@ class SkuDataController extends Controller
      * @param  \App\Models\SkuData  $skuData
      * @return \Illuminate\Http\Response
      */
-    public function show(SkuData $skuData)
+    public function show(SkuData $skuData, $id)
     {
-        //
+        // $skuData = SkuData::all();
+        $skuData = SkuData::find($id);
+
+        return response($skuData);
+    }
+
+    /**
+     * Display all resources.
+     *
+     * @param  \App\Models\SkuData  $skuData
+     * @return \Illuminate\Http\Response
+     */
+    public function showAll(SkuData $skuData){
+        $skuData = SkuData::all(); 
+
+        return response($skuData);
     }
 
     /**

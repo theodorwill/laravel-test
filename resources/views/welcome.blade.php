@@ -282,6 +282,10 @@
             grid-template-columns: repeat(1, minmax(0, 1fr))
         }
 
+        .custom {
+            color: whitesmoke;
+        }
+
         @media (min-width:640px) {
             .sm\:rounded-lg {
                 border-radius: .5rem
@@ -394,11 +398,19 @@
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
-        <div>
+        <div class="custom">
             <h1>Test</h1>
 
             @foreach ($allSkuData as $skuData)
+            <div class="flex" style="align-items: center;">
             <p>Data: {{ $skuData->name }}</p>
+
+            
+            
+            <button >Delete</button>
+            
+
+            </div>
             @endforeach
 
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
