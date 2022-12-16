@@ -32,4 +32,4 @@ sample response data:
  ]  
 ```
 ## DELETE 
-/api/deleteItem/:id - delete item from db based on id
+/api/deleteItem/{id} - delete item from db based on id
