@@ -1,6 +1,7 @@
 # Endpoints
 
-## POST /api/sku - post data to the API
+## POST 
+/api/sku
 req.body 
 ```
 {
@@ -8,7 +9,11 @@ req.body
 }
 ```
 
-## GET /api/items - get all API data
+## GET 
+/api/items - get all API data
+
+/api/item/{id} - get specific data based on id
+
 sample response data:
 ```
 [
@@ -26,7 +31,5 @@ sample response data:
 	},
  ]  
 ```
-
-## GET /api/item/{id} - get specific data based on id
-
-## DELETE /api/deleteItem/:id - delete item from db based on id
+## DELETE 
+/api/deleteItem/:id - delete item from db based on id
