@@ -13,11 +13,13 @@ php artisan serve
 ```
 php artisan migrate:fresh --seed
 ```
+## Only run from cache
+comment line 177 in SkuDataController.php "$skuData->save();"
 
 # Endpoints
 
 ## POST 
-/api/sku - post array of sku and respond with price for all matching inside cache or db
+/api/sku - post array of sku (adds to cache and db if record doesn't exist in cache/db).
 req.body 
 ```
 {
