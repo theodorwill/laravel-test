@@ -13,7 +13,7 @@ php artisan serve
 ```
 php artisan migrate:fresh --seed
 ```
-## Only run from cache
+## No Save to DB
 comment line 177 in SkuDataController.php "$skuData->save();"
 
 # Endpoints
