@@ -61,28 +61,7 @@ class SkuDataController extends Controller
      */
     public function store(StoreSkuDataRequest $request)
     {
-        
-        // check cache for request
-        $cacheKey = 'skuData' . $request->sku;
-        $cache = Cache::get($cacheKey);
-        if ($cache) {
-            return response([$cache]);
-        } else {
-            $postRequest = $request->validate([
-                'sku' => ['required', Rule::unique('sku_data', 'sku')]
-            ]);
-            SkuData::create($postRequest);
-            Cache::put($cacheKey, $postRequest, 60);
-        }
-
-
-
-        $postRequest = $request->validate([
-            'sku' => ['required', Rule::unique('sku_data', 'sku')]
-        ]);
-        SkuData::create($postRequest);
-
-        return response('success');
+        //
     }
 
     /**
@@ -165,7 +144,7 @@ class SkuDataController extends Controller
 
             if ($cache) {
                 array_push($newArray, $cache);
-            } else {
+            } else if(!$cache){
                 $skuData = SkuData::where('sku', $sku)->first();
                 if ($skuData) {
                     $priceExcVat = rand(300, 1200);
@@ -180,7 +159,23 @@ class SkuDataController extends Controller
                     
                     Cache::put($cacheKey, $skuData, 60);
                     array_push($newArray, $skuData);
-                } 
+                } else {
+                    $skuData = new SkuData;
+                    $skuData->id = hexdec(uniqid());
+                    $skuData->sku = $sku;
+                    $skuData->vat = 25;
+                    $priceExcVat = rand(300, 1200);
+                    $priceIncVat = ($priceExcVat / 100) * (100 + $skuData->vat);
+                    $priceExcVatFormatted = $numberFormatter->formatCurrency($priceExcVat, 'SEK');
+                    $priceIncVatFormatted = $numberFormatter->formatCurrency($priceIncVat, 'SEK');
+                    $skuData->priceExcVat = $priceExcVat;
+                    $skuData->priceIncVat = $priceExcVat;
+                    $skuData->priceExcVatFormatted = $priceExcVatFormatted;
+                    $skuData->priceIncVatFormatted = $priceIncVatFormatted; 
+                    Cache::put($cacheKey, $skuData, 60);
+                    array_push($newArray, $skuData);
+                    $skuData->save();
+                }
             }
         }
         return response($newArray);

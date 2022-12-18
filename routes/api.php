@@ -25,6 +25,4 @@ Route::get('/item/{id}', [SkuDataController::class, 'show']);
 
 Route::post('/sku', [SkuDataController::class, 'getPrice']);
 
-/* route::post('/sku', [SkuDataController::class, 'store']); */
-
 Route::delete('/deleteItem/{id}', [SkuDataController::class, 'destroy']);
