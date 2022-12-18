@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('sku_data', function (Blueprint $table) {
             $table->id();
-            $table->integer('sku');
+            $table->integer('sku')->unique();
+            $table->integer('vat')->nullable();
+            $table->double('priceExcVat')->nullable();
+            $table->double('priceIncVat')->nullable();
+            $table->string('priceExcVatFormatted')->nullable();
+            $table->string('priceIncVatFormatted')->nullable();
             $table->timestamps();
         });
     }

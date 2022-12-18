@@ -6,7 +6,9 @@ use App\Models\SkuData;
 use App\Http\Requests\StoreSkuDataRequest;
 use App\Http\Requests\UpdateSkuDataRequest;
 use App\Http\Resources\V1\SkuDataResource;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rule;
+use \NumberFormatter;
 
 class SkuDataController extends Controller
 {
@@ -60,6 +62,21 @@ class SkuDataController extends Controller
     public function store(StoreSkuDataRequest $request)
     {
         
+        // check cache for request
+        $cacheKey = 'skuData' . $request->sku;
+        $cache = Cache::get($cacheKey);
+        if ($cache) {
+            return response([$cache]);
+        } else {
+            $postRequest = $request->validate([
+                'sku' => ['required', Rule::unique('sku_data', 'sku')]
+            ]);
+            SkuData::create($postRequest);
+            Cache::put($cacheKey, $postRequest, 60);
+        }
+
+
+
         $postRequest = $request->validate([
             'sku' => ['required', Rule::unique('sku_data', 'sku')]
         ]);
@@ -125,5 +142,47 @@ class SkuDataController extends Controller
         $skuData = SkuData::find($id);
         $skuData->delete();
         return response('Data with id of: '.$id.'was deleted.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Http\Requests\StoreSkuDataRequest  $request
+     * @param  \App\Models\SkuData  $skuData
+     * @return \Illuminate\Http\Response
+     */
+    public function getPrice(StoreSkuDataRequest $request, SkuData $skuData)
+    {
+
+        $newArray = [];
+        $numberFormatter = new NumberFormatter('sv_SE', NumberFormatter::CURRENCY);
+        $numberFormatter->setAttribute(NumberFormatter::FRACTION_DIGITS, 2);
+
+        foreach ($request->sku as $sku) {
+            
+            $cacheKey = 'sku' . $sku;
+            $cache = Cache::get($cacheKey);
+
+            if ($cache) {
+                array_push($newArray, $cache);
+            } else {
+                $skuData = SkuData::where('sku', $sku)->first();
+                if ($skuData) {
+                    $priceExcVat = rand(300, 1200);
+                    $priceIncVat = ($priceExcVat / 100) * (100 + $skuData->vat);
+                    $priceExcVatFormatted = $numberFormatter->formatCurrency($priceExcVat, 'SEK');
+                    $priceIncVatFormatted = $numberFormatter->formatCurrency($priceIncVat, 'SEK');
+                    $skuData->priceExcVat = $priceExcVat;
+                    $skuData->priceIncVat = $priceIncVat;
+                    $skuData->priceExcVatFormatted = $priceExcVatFormatted;
+                    $skuData->priceIncVatFormatted = $priceIncVatFormatted;
+                    $skuData->save();
+                    
+                    Cache::put($cacheKey, $skuData, 60);
+                    array_push($newArray, $skuData);
+                } 
+            }
+        }
+        return response($newArray);
     }
 }

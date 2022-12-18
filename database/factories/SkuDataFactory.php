@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\SkuData;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class SkuDataFactory extends Factory
     public function definition()
     {
         return [
-            'sku' => $this->faker->numberBetween(100000, 999999)
+            'sku' => $this->faker->unique()->numberBetween(100000, 999999),
+            'vat' => 25,
         ];
     }
 }
