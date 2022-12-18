@@ -4,11 +4,11 @@
 ```
 npm install
 ```
-
+## start api on local
 ```
 php artisan serve
 ```
-## !Important!
+## ! Important !
 Might need to enable php_intl.dll in php.ini, due to NumberFormatter();
 Example:
 ```
