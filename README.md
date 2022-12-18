@@ -8,7 +8,12 @@ npm install
 ```
 php artisan serve
 ```
-
+## !Important!
+Might need to enable php_intl.dll in php.ini, due to NumberFormatter();
+Example:
+```
+;extension=php_intl.dll --> extension=php_intl.dll
+```
 ## seed
 ```
 php artisan migrate:fresh --seed
