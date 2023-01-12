@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 use App\Models\Products;
+use App\Models\SkuData;
 
 class ProductsController extends Controller
 {
@@ -43,11 +44,15 @@ class ProductsController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Products  $products
+     * @param \App\Models\SkuData $skuData
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Products $products, SkuData $skuData, $id)
     {
-        //
+        $products = Products::find($id);
+        $skuData = SkuData::where('products_id', $id)->get();
+        $products->sku = $skuData;
+        return response($products);
     }
 
     /**

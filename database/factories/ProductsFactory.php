@@ -17,7 +17,7 @@ class ProductsFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->words(3, true),
+
         ];
     }
 }
