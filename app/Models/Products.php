@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SkuData extends Model
+class Products extends Model
 {
-    protected $fillable = ['sku'];
     use HasFactory;
 
-    public function product()
+    public function skuData()
     {
-        return $this->belongsTo(Products::class);
+        return $this->hasOne(SkuData::class);
     }
 }

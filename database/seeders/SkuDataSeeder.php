@@ -16,8 +16,6 @@ class SkuDataSeeder extends Seeder
      */
     public function run()
     {
-        SkuData::factory()
-        ->count(20)
-        ->Create();
+        //
     }
 }
