@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\SkuData;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SkuDataSeeder extends Seeder
+class ProductVersionsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
