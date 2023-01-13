@@ -25,6 +25,8 @@ class SkuDataFactory extends Factory
         $vat = 25;
 
         return [
+            'product_id' => Product::factory(),
+            'sku' => $this->faker->unique()->numberBetween(100000, 999999),
             'vat' => $vat,
             'priceExcVat' => $priceExcVat,
             'priceIncVat' => ($priceExcVat / 100) * (100 + $vat),

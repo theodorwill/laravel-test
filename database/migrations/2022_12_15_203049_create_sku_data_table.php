@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sku_data', function (Blueprint $table) {
-            $table->integer('product_id');
-            $table->foreign('sku')->references('sku')->on('products');
+            $table->id('product_id')->unique();
+            $table->integer('sku')->unique();
             $table->integer('vat')->nullable();
             $table->double('priceExcVat')->nullable();
             $table->double('priceIncVat')->nullable();

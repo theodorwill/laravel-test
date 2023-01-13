@@ -17,7 +17,6 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'sku' => $this->faker->unique()->numberBetween(100000, 999999),
         ];
     }
 }
