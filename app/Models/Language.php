@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Products extends Model
+class Language extends Model
 {
     use HasFactory;
-
-    public function skuData()
-    {
-        return $this->hasOne(SkuData::class);
-    }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('product_versions', function (Blueprint $table) {
             $table->id();
-            $table->integer('sku_id');
+            $table->integer('product_id');
             $table->integer('language_id');
             $table->double('version');
             $table->boolean('is_active')->default(false);

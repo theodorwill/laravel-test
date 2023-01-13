@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProductsRequest;
-use App\Http\Requests\UpdateProductsRequest;
-use App\Models\Products;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+use App\Models\Product;
 use App\Models\SkuData;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +32,10 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProductsRequest  $request
+     * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductsRequest $request)
+    public function store(StoreProductRequest $request)
     {
         //
     }
@@ -43,14 +43,14 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Product  $products
      * @param \App\Models\SkuData $skuData
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products, SkuData $skuData, $id)
+    public function show(Product $products, SkuData $skuData, $id)
     {
-        $products = Products::find($id);
-        $skuData = SkuData::where('products_id', $id)->get();
+        $products = Product::find($id);
+        $skuData = SkuData::where('product_id', $id)->get();
         $products->sku = $skuData;
         return response($products);
     }
@@ -58,10 +58,10 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Product $products)
     {
         //
     }
@@ -69,11 +69,11 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProductsRequest  $request
-     * @param  \App\Models\Products  $products
+     * @param  \App\Http\Requests\UpdateProductRequest  $request
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductsRequest $request, Products $products)
+    public function update(UpdateProductRequest $request, Product $products)
     {
         //
     }
@@ -81,10 +81,10 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy(Product $products)
     {
         //
     }

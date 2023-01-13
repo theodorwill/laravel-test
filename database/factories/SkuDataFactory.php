@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\SkuData;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use \NumberFormatter;
 
@@ -25,8 +25,7 @@ class SkuDataFactory extends Factory
         $vat = 25;
 
         return [
-            'products_id' => Products::factory(),
-            'sku' => $this->faker->unique()->numberBetween(100000, 999999),
+            'sku' => Product::factory()->create()->sku,
             'vat' => $vat,
             'priceExcVat' => $priceExcVat,
             'priceIncVat' => ($priceExcVat / 100) * (100 + $vat),

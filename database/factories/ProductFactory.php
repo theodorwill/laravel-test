@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Languages>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
  */
-class LanguagesFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class LanguagesFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'sku' => $this->faker->unique()->numberBetween(100000, 999999),
         ];
     }
 }
