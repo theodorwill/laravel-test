@@ -25,7 +25,6 @@ class SkuDataFactory extends Factory
         $vat = 25;
 
         return [
-            'sku' => Product::factory()->create()->sku,
             'vat' => $vat,
             'priceExcVat' => $priceExcVat,
             'priceIncVat' => ($priceExcVat / 100) * (100 + $vat),

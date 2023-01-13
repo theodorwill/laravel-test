@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sku_data', function (Blueprint $table) {
             $table->integer('product_id');
-            $table->integer('sku')->unique();
+            $table->foreign('sku')->references('sku')->on('products');
             $table->integer('vat')->nullable();
             $table->double('priceExcVat')->nullable();
             $table->double('priceIncVat')->nullable();
