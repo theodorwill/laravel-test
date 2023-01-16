@@ -69,6 +69,22 @@ example of responses:
 	}
 ]
 ```
+
+## GET 
+
+```/api/product/{id}```
+get a specific Product
+
+```/api/product/{id}/ver```
+get a specific products version data
+
+```/api/product/{id}/lang```
+get a specific products active languages
+
+```/api/product/{id}/all```
+get all data from a specific product
+
+sample response data:
 ```
 {
 	"product": {
@@ -132,21 +148,6 @@ example of responses:
 	]
 }
 ```
-## GET 
-
-```/api/product/{id}```
-get a specific Product
-
-```/api/product/{id}/ver```
-get a specific products version data
-
-```/api/product/{id}/lang```
-get a specific products active languages
-
-```/api/product/{id}/all```
-get all data from a specific product
-
-sample response data: ^
 
 ## DELETE 
 /api/deleteItem/{id} - delete item from db based on id
