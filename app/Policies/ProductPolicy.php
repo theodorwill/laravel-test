@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Product;
 use App\Models\User;
-use App\Models\sku;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SkuPolicy
+class ProductPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class SkuPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\sku  $sku
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, sku $sku)
+    public function view(User $user, Product $products)
     {
         //
     }
@@ -48,10 +48,10 @@ class SkuPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\sku  $sku
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, sku $sku)
+    public function update(User $user, Product $products)
     {
         //
     }
@@ -60,10 +60,10 @@ class SkuPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\sku  $sku
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, sku $sku)
+    public function delete(User $user, Product $products)
     {
         //
     }
@@ -72,10 +72,10 @@ class SkuPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\sku  $sku
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, sku $sku)
+    public function restore(User $user, Product $products)
     {
         //
     }
@@ -84,10 +84,10 @@ class SkuPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\sku  $sku
+     * @param  \App\Models\Product  $products
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, sku $sku)
+    public function forceDelete(User $user, Product $products)
     {
         //
     }

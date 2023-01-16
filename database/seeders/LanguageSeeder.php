@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\SkuData;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Language;
 
-class SkuDataSeeder extends Seeder
+class LanguageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +15,6 @@ class SkuDataSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Language::factory()->count(184)->create();
     }
 }

@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\SkuData;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use \NumberFormatter;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SkuData>
@@ -17,9 +19,19 @@ class SkuDataFactory extends Factory
      */
     public function definition()
     {
+        $numberFormatter = new NumberFormatter('sv_SE', NumberFormatter::CURRENCY);
+        $numberFormatter->setAttribute(NumberFormatter::FRACTION_DIGITS, 2);
+        $priceExcVat = rand(300, 1200);
+        $vat = 25;
+
         return [
+            'product_id' => Product::factory(),
             'sku' => $this->faker->unique()->numberBetween(100000, 999999),
-            'vat' => 25,
+            'vat' => $vat,
+            'priceExcVat' => $priceExcVat,
+            'priceIncVat' => ($priceExcVat / 100) * (100 + $vat),
+            'priceExcVatFormatted' => $numberFormatter->formatCurrency($priceExcVat, 'SEK'),
+            'priceIncVatFormatted' => $numberFormatter->formatCurrency(($priceExcVat / 100) * (100 + $vat), 'SEK'),
         ];
     }
 }
