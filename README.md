@@ -70,9 +70,23 @@ example of response:
 ]
 ```
 ## GET 
-/api/items - get all API data
+get all API data
+```/api/items```
 
-/api/item/{id} - get specific data based on id
+get specific data based on id
+```/api/item/{id}```
+
+get a specific Product
+```/api/product/{id}```
+
+get a specific products version data
+```/api/product/{id}/ver```
+
+get a specific products active languages
+```/api/product/{id}/lang```
+
+get all data from a specific product
+```/api/product/{id}/all```
 
 sample response data: ^
 
