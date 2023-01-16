@@ -31,7 +31,7 @@ req.body
     "sku": [668902, 476086, 534211]
 }
 ```
-example of response:
+example of responses:
 ```
 [
 	{
@@ -69,24 +69,82 @@ example of response:
 	}
 ]
 ```
+```
+{
+	"product": {
+		"id": 4,
+		"sku": [
+			{
+				"product_id": 4,
+				"sku": 364716,
+				"vat": 25,
+				"priceExcVat": 411,
+				"priceIncVat": 513.75,
+				"priceExcVatFormatted": "411,00 kr",
+				"priceIncVatFormatted": "513,75 kr",
+				"created_at": "2023-01-16T12:49:07.000000Z",
+				"updated_at": "2023-01-16T12:49:07.000000Z"
+			}
+		],
+		"created_at": "2023-01-16T12:49:07.000000Z",
+		"updated_at": "2023-01-16T12:49:07.000000Z"
+	},
+	"product_versions": [
+		{
+			"id": 10,
+			"product_id": 4,
+			"language_id": 95,
+			"version": 2,
+			"is_active": 1,
+			"created_at": "2023-01-16T12:49:07.000000Z",
+			"updated_at": "2023-01-16T12:49:07.000000Z"
+		},
+		{
+			"id": 11,
+			"product_id": 4,
+			"language_id": 136,
+			"version": 3,
+			"is_active": 0,
+			"created_at": "2023-01-16T12:49:07.000000Z",
+			"updated_at": "2023-01-16T12:49:07.000000Z"
+		},
+		{
+			"id": 12,
+			"product_id": 4,
+			"language_id": 48,
+			"version": 1,
+			"is_active": 1,
+			"created_at": "2023-01-16T12:49:07.000000Z",
+			"updated_at": "2023-01-16T12:49:07.000000Z"
+		}
+	],
+	"languages": [
+		{
+			"id": 95,
+			"name": "Thai - ไทย",
+			"code": "th"
+		},
+		{
+			"id": 48,
+			"name": "Lithuanian - lietuvių",
+			"code": "lt"
+		}
+	]
+}
+```
 ## GET 
-get all API data
-```/api/items```
 
-get specific data based on id
-```/api/item/{id}```
-
-get a specific Product
 ```/api/product/{id}```
+get a specific Product
 
-get a specific products version data
 ```/api/product/{id}/ver```
+get a specific products version data
 
-get a specific products active languages
 ```/api/product/{id}/lang```
+get a specific products active languages
 
-get all data from a specific product
 ```/api/product/{id}/all```
+get all data from a specific product
 
 sample response data: ^
 
