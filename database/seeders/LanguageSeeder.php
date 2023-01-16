@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Language;
 
-class ProductVersionsSeeder extends Seeder
+class LanguageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class ProductVersionsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Language::factory()->count(184)->create();
     }
 }

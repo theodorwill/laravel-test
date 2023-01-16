@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_versions', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->integer('sku_id');
-            $table->integer('language_id');
-            $table->double('version');
-            $table->boolean('is_active')->default(false);
+            $table->string('code');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_versions');
+        Schema::dropIfExists('languages');
     }
 };
