@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_versions', function (Blueprint $table) {
+        Schema::create('product_ints', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->integer('language_id');
-            $table->double('version');
-            $table->boolean('is_active')->default(false);
+            $table->integer('product_version_id');
+            $table->integer('attribute_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_versions');
+        Schema::dropIfExists('product_ints');
     }
 };

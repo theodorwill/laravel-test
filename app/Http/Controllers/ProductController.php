@@ -4,88 +4,59 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Language;
 use App\Models\Product;
+use App\Models\Product_version;
 use App\Models\SkuData;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function show(Product $product, SkuData $skuData, $id): \Illuminate\Http\JsonResponse
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreProductRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreProductRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $products
-     * @param \App\Models\SkuData $skuData
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $products, SkuData $skuData, $id)
-    {
-        $products = Product::find($id);
+        $product = Product::find($id);
         $skuData = SkuData::where('product_id', $id)->get();
-        $products->sku = $skuData;
-        return response($products);
+        $product->sku = $skuData;
+
+        return response()->json($product);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $products)
+    public function showProductVersion(Product_version $productVersion, $id): \Illuminate\Http\JsonResponse
     {
-        //
+        $productVersion = Product_version::where('product_id', $id)->get();
+        return response()->json(['product_versions' => $productVersion]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateProductRequest  $request
-     * @param  \App\Models\Product  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateProductRequest $request, Product $products)
+    public function showLanguage(Language $language, Product_version $product_version, $id): \Illuminate\Http\JsonResponse
     {
-        //
+        $language = Language::join('product_versions', 'languages.id', '=', 'product_versions.language_id')
+            ->where('product_versions.product_id', $id)
+            ->where('product_versions.is_active', 1)
+            ->get(['languages.*']);
+
+        return response()->json(['languages' => $language]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $products)
+    public function showAllInfo(Product $product, SkuData $skuData, Language $language, Product_version $product_version, $id): \Illuminate\Http\JsonResponse
     {
-        //
+        $product = Product::find($id);
+        $skuData = SkuData::where('product_id', $id)->get();
+        $product->sku = $skuData;
+        //active product version
+        $product_version = Product_version::where('product_id', $id)->get();
+
+        $language = Language::join('product_versions', 'languages.id', '=', 'product_versions.language_id')
+            ->where('product_versions.product_id', $id)
+            ->where('product_versions.is_active', 1)
+            ->get(['languages.id', 'languages.name', 'languages.code']);
+
+        return response()->json([
+            'product' => $product,
+            'product_versions' => $product_version,
+            'languages' => $language,
+        ]);
     }
+
+
 }

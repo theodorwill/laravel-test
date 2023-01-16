@@ -19,6 +19,7 @@ class ProductSeeder extends Seeder
     {
         Product::factory()->count(10)
             ->has(SkuData::factory()->count(1))
+            ->has(Product_version::factory()->count(3))
             ->create();
     }
 }

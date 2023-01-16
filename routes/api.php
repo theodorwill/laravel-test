@@ -32,6 +32,8 @@ Route::delete('/deleteItem/{id}', [SkuDataController::class, 'destroy']);
 
 Route::get('/product/{id}', [ProductController::class, 'show']);
 
-Route::get('/product/{id}/language', [ProductController::class, 'show']);
+Route::get('/product/{id}/ver', [ProductController::class, 'showProductVersion']);
 
-Route::get('/product/{id}/product_version', [ProductController::class, 'show']);
+Route::get('/product/{id}/lang', [ProductController::class, 'showLanguage']);
+
+Route::get('/product/{id}/all', [ProductController::class, 'showAllInfo']);

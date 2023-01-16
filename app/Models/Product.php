@@ -18,4 +18,9 @@ class Product extends Model
     {
         return $this->hasMany(Product_version::class);
     }
+
+    public function language()
+    {
+        return $this->belongsToMany(Language::class);
+    }
 }
