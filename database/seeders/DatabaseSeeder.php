@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             ProductSeeder::class,
-            LanguageSeeder::class
+            LanguageSeeder::class,
+            Product_versionSeeder::class
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

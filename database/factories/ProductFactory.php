@@ -17,6 +17,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
+            'product_version' => 1
         ];
     }
 }

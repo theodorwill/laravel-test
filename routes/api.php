@@ -24,8 +24,14 @@ Route::get('/items', [SkuDataController::class, 'showAll']);
 
 Route::get('/item/{id}', [SkuDataController::class, 'show']);
 
-Route::get('/product/{id}', [ProductController::class, 'show']);
-
 Route::post('/sku', [SkuDataController::class, 'getPrice']);
 
 Route::delete('/deleteItem/{id}', [SkuDataController::class, 'destroy']);
+
+
+
+Route::get('/product/{id}', [ProductController::class, 'show']);
+
+Route::get('/product/{id}/language', [ProductController::class, 'show']);
+
+Route::get('/product/{id}/product_version', [ProductController::class, 'show']);

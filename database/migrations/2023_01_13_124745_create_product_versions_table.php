@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('language_id');
-            $table->double('version');
+            $table->double('version')->unique();
             $table->boolean('is_active')->default(false);
+            $table->timestamps();
         });
     }
 

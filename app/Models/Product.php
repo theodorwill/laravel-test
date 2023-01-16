@@ -13,4 +13,9 @@ class Product extends Model
     {
         return $this->hasOne(SkuData::class);
     }
+
+    public function productVersion()
+    {
+        return $this->hasMany(Product_version::class);
+    }
 }
