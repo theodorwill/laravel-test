@@ -14,12 +14,12 @@ class Product extends Model
         return $this->hasOne(SkuData::class);
     }
 
-    public function productVersion()
+    public function productVersions()
     {
         return $this->hasMany(Product_version::class);
     }
 
-    public function language()
+    public function languages()
     {
         return $this->belongsToMany(Language::class);
     }

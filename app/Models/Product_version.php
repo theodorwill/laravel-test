@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Product_version extends Model
 {
     use HasFactory;
+
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+public function productInt()
+    {
+        return $this->hasOne(Product_ints::class);
+    }
 }

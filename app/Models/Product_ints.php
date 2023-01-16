@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product_ints extends Model
 {
     use HasFactory;
+
+    public function productVersions()
+    {
+        return $this->belongsTo(Product_version::class);
+    }
 }
