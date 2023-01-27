@@ -19,13 +19,8 @@ class Product extends Model
         return $this->hasMany(Product_version::class);
     }
 
-    public function languages()
+    public function productOrders()
     {
-        return $this->belongsToMany(Language::class);
-    }
-
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Product_order::class);
     }
 }

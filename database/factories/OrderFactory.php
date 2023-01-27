@@ -32,9 +32,6 @@ class OrderFactory extends Factory
         return [
             'product_id' => $this->products(),
             'customer_id' => $this->faker->numberBetween(1, 10),
-
-            //faker mu
-
         ];
     }
 }
