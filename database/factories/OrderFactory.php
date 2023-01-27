@@ -17,7 +17,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'customer_id' => \App\Models\Customer::factory(),
+            'product_ids' => \App\Models\Product::factory()->count(3),
         ];
     }
 }

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('customer_id');
+            $table->json('product_ids')->nullable();
             $table->timestamps();
         });
     }
