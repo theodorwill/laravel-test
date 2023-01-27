@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Order;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
@@ -28,6 +29,8 @@ class CustomerFactory extends Factory
             'city' => $this->faker->city(),
             'state' => $this->faker->state(),
             'zip' => $this->faker->postcode(),
+            'order_id' => order::factory()
+
         ];
     }
 }

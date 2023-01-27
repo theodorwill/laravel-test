@@ -10,7 +10,7 @@ class Customer extends Model
     use HasFactory;
 
     protected $casts = [
-        'order_ids' => 'array'
+        'order_id' => 'array'
     ];
 
     public function orders()
