@@ -75,11 +75,83 @@ example of responses:
 ```/api/customer/{id}```
 get a single customer
 
+sample response data:
+```
+{
+	"id": 1,
+	"name": "Ruecker-Boyer",
+	"type": "business",
+	"email": "adaline.johnston@example.org",
+	"address": "5393 Larson Plaza",
+	"city": "Berneicechester",
+	"state": "Florida",
+	"zip": "71116-4907",
+	"created_at": "2023-02-01T14:34:11.000000Z",
+	"updated_at": "2023-02-01T14:34:11.000000Z"
+}
+```
+
 ```/api/customer/{id}/orders```
 get all orders from a customer
 
 ```/api/customer/{id}/order/{order_id}```
 get a single order from a customer
+
+sample response data:
+```
+[
+	{
+		"id": 3,
+		"customer_id": 1,
+		"created_at": "2023-02-01T14:34:11.000000Z",
+		"updated_at": "2023-02-01T14:34:11.000000Z",
+		"product_order": [
+			{
+				"id": 7,
+				"product_id": 7,
+				"order_id": 3,
+				"quantity": 1,
+				"created_at": "2023-02-01T14:34:11.000000Z",
+				"updated_at": "2023-02-01T14:34:11.000000Z",
+				"product": {
+					"id": 7,
+					"sku": null,
+					"created_at": "2023-02-01T14:34:10.000000Z",
+					"updated_at": "2023-02-01T14:34:10.000000Z"
+				}
+			},
+			{
+				"id": 28,
+				"product_id": 9,
+				"order_id": 3,
+				"quantity": 3,
+				"created_at": "2023-02-01T14:34:11.000000Z",
+				"updated_at": "2023-02-01T14:34:11.000000Z",
+				"product": {
+					"id": 9,
+					"sku": null,
+					"created_at": "2023-02-01T14:34:10.000000Z",
+					"updated_at": "2023-02-01T14:34:10.000000Z"
+				}
+			},
+			{
+				"id": 95,
+				"product_id": 10,
+				"order_id": 3,
+				"quantity": 1,
+				"created_at": "2023-02-01T14:34:11.000000Z",
+				"updated_at": "2023-02-01T14:34:11.000000Z",
+				"product": {
+					"id": 10,
+					"sku": null,
+					"created_at": "2023-02-01T14:34:10.000000Z",
+					"updated_at": "2023-02-01T14:34:10.000000Z"
+				}
+			}
+		]
+	}
+]
+```
 
 ```/api/product/{id}```
 get a specific Product
