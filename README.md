@@ -72,6 +72,15 @@ example of responses:
 
 ## GET 
 
+```/api/customer/{id}```
+get a single customer
+
+```/api/customer/{id}/orders```
+get all orders from a customer
+
+```/api/customer/{id}/order/{order_id}```
+get a single order from a customer
+
 ```/api/product/{id}```
 get a specific Product
 
