@@ -43,4 +43,6 @@ Route::get('/product/{id}/all', [ProductController::class, 'showAllInfo']);
 
 Route::get('/customer/{id}', [CustomerController::class, 'show']);
 
-Route::get('/customer/{id}/orders', [OrderController::class, 'show']);
+Route::get('/customer/{id}/orders', [OrderController::class, 'showAll']);
+
+Route::get('/customer/{id}/order/{order_id}', [OrderController::class, 'show']);

@@ -11,26 +11,6 @@ use App\Http\Requests\UpdateOrderRequest;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreOrderRequest  $request
@@ -49,7 +29,7 @@ class OrderController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\jsonResponse
      */
-    public function show(Order $order, Product_order $product_order, Product $product, $id)
+    public function showAll(Order $order, Product_order $product_order, Product $product, $id)
     {
         $order = Order::where('customer_id', $id)->get()->map(function ($order) {
             $order->product_order = Product_order::where('order_id', $order->id)->get();
@@ -63,6 +43,31 @@ class OrderController extends Controller
         });
 
         return response()->json($order); 
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Product_order  $product_order
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\jsonResponse
+     */
+    public function show(Order $order, Product_order $product_order, Product $product, $id, $order_id)
+    {
+        $order = Order::where('customer_id', $id)->where('id', $order_id)->get()->map(function ($order) {
+            $order->product_order = Product_order::where('order_id', $order->id)->get();
+
+            //foreach product_order, get product
+            foreach ($order->product_order as $product_order) {
+                $product_order->product = Product::find($product_order->product_id);
+            }
+
+            return $order;
+        });
+
+        return response()->json($order);
     }
 
     /**
