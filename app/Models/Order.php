@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $casts = [
-        'product_id' => 'array'
+        'product_order_id' => 'array'
     ];
 
     public function customer()
@@ -18,8 +18,8 @@ class Order extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public function products()
+    public function productOrder()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product_order::class);
     }
 }

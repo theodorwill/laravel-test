@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SkuDataController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,8 @@ Route::get('/product/{id}/ver', [ProductController::class, 'showProductVersion']
 Route::get('/product/{id}/lang', [ProductController::class, 'showLanguage']);
 
 Route::get('/product/{id}/all', [ProductController::class, 'showAllInfo']);
+
+
+Route::get('/customer/{id}', [CustomerController::class, 'show']);
+
+Route::get('/customer/{id}/orders', [OrderController::class, 'show']);

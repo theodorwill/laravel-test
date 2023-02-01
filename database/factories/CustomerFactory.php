@@ -29,8 +29,6 @@ class CustomerFactory extends Factory
             'city' => $this->faker->city(),
             'state' => $this->faker->state(),
             'zip' => $this->faker->postcode(),
-            'order_id' => order::factory()
-
         ];
     }
 }

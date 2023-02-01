@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->json('order_id')->nullable();
             $table->string('name');
             $table->string('type');
             $table->string('email')->unique();

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
+use App\Models\Product_order;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Controllers\OrderController;
 
 class CustomerController extends Controller
 {
@@ -15,7 +18,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -43,11 +46,24 @@ class CustomerController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Order  $order
+     * @param \App\Models\Product_order $product_order
+     * @return \Illuminate\Http\jsonResponse
      */
-    public function show(Customer $customer)
+    public function show(Customer $customer, Order $order, Product_order $product_order, $id)
     {
-        //
+        $customer = Customer::find($id);
+        
+        $order = Order::where('customer_id', $id)->get()->map(function ($order) {
+            $order->product_order = Product_order::where('order_id', $order->id)->get();
+            return $order;
+        });
+        
+        return response()->json([
+            'customer' => $customer,
+            //array of product orders inside order
+            'orders' => $order,
+        ]);
     }
 
     /**
